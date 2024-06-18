@@ -9,7 +9,7 @@ const app = express();
 
 // Define CORS options
 const corsOptions = {
-  origin: process.env.FRONTEND_URL || '*',
+  origin: 'https://ecomm-frontend-zeta.vercel.app',
   credentials: true,
 };
 
