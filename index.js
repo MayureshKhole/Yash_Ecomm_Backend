@@ -11,6 +11,7 @@ app.use(cors({
   origin : process.env.FRONTEND_URL,
   credentials : true
 }))
+app.options('*', cors(corsOptions));   // this is the options request (https://chatgpt.com/c/4130e902-b69c-46f5-ac7d-65dcc270daa2)
 app.use(cookieParser())
 app.use(express.json())
 app.use("/api",router)
@@ -20,7 +21,7 @@ app.get('/', (req, res) => {
 });
 
 
-app.options('*', cors(corsOptions));
+
 
 const PORT = 8080 || process.env.PORT;
 
