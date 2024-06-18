@@ -23,7 +23,7 @@ app.use(cookieParser());
 app.use(express.json());
 app.use("/api", router);
 
-app.get('/', (req, res) => {
+app.get('/hello', (req, res) => {
   res.send('Hello World!');
 });
 
