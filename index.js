@@ -15,6 +15,10 @@ app.use(cookieParser())
 app.use(express.json())
 app.use("/api",router)
 
+app.get('/', (req, res) => {
+  res.send('Hello World!');
+});
+
 const PORT = 8080 || process.env.PORT;
 
 connectDB().then(() => {
