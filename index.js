@@ -19,6 +19,9 @@ app.get('/', (req, res) => {
   res.send('Hello World!');
 });
 
+
+app.options('*', cors(corsOptions));
+
 const PORT = 8080 || process.env.PORT;
 
 connectDB().then(() => {
