@@ -25,18 +25,14 @@ const deleteAddToCartProduct = require("../controller/user/deleteAddToCartProduc
 const addToCartViewProduct = require("../controller/user/addToCartViewProduct")
 const updateAddToCartProduct = require("../controller/user/updateAddToCartProduct")
 
-
-
 router.post("/signup",userSignUpController)
 router.post("/signin",userSignInController)
 router.get("/user-details",authToken,userDetailsController)
 router.get("/userLogout",userLogout)
 
-
-//admini-panel
+//admin-panel
 router.get("/all-user",authToken,allUsers)
 router.post("/update-user",authToken,updateUser)
-
 
 //Product
 router.post("/upload-product",authToken,UploadProductController)
@@ -44,8 +40,6 @@ router.get("/get-product",getProductController)
 router.post("/update-product",authToken,updateProductController)
 router.get("/get-categoryProduct",getCategoryProductOne)
 router.post("/category-product",getCategoryWiseProduct)
-
-
 
 router.post("/product-details",getProductDetails)
 router.get("/search",searchProduct)

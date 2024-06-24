@@ -14,7 +14,7 @@ async function userSignInController(req, res) {
     }
 
     const user = await userModel.findOne({ email });
-    console.log(user)
+    console.log(user);
 
     if (!user) {
       throw new Error("User not found");
@@ -24,11 +24,11 @@ async function userSignInController(req, res) {
 
     console.log("checkPassoword", checkPassword);
 
-    if(checkPassword){
+    if (checkPassword) {
       const tokenData = {
-          _id : user._id,
-          email : user.email,
-      }
+        _id: user._id,
+        email: user.email,
+      };
       const token = await jwt.sign(tokenData, process.env.TOKEN_SECRET_KEY, { expiresIn: 60 * 60 * 8 });
 
       console.log("Token : " , token)
@@ -37,19 +37,18 @@ async function userSignInController(req, res) {
           httpOnly : true,
           secure : true
       }
+      res.cookie("token", token, tokenOption).status(200).json({
+        message: "Login successfully",
+        data: token,
+        success: true,
+        error: false,
+      });
 
-      res.cookie("token",token,tokenOption).status(200).json({
-          message : "Login successfully",
-          data : token,
-          success : true,
-          error : false
-      })
-    
-    }else {
+    } else {
       throw new Error("Please check Password");
     }
 
-  }catch (err) {
+  } catch (err) {
     res.json({
       message: err.message || err,
       error: true,
